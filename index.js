@@ -72,6 +72,7 @@ const isDateAvailableToBuy = async (page) => {
       );
       const shouldStop = await isDateAvailableToBuy(page);
       if (shouldStop) {
+        exec("afplay ./alert.mp3");
         retry = MAX_RETRY + 1;
       } else {
         const nextPoll = DEFAULT_POOL_DELAY_IN_MS * getRandomArbitrary();
@@ -85,7 +86,6 @@ const isDateAvailableToBuy = async (page) => {
       }
     }
 
-    exec("afplay ./alert.mp3");
     return;
   } catch (err) {
     console.error(err);
