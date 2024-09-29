@@ -1,0 +1,22 @@
+{
+  "name": "italy-visa-check",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon index.js",
+    "check": "node index.js"
+  },
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "date-fns": "^3.6.0",
+    "dotenv": "^16.0.1",
+    "node-fetch": "^3.3.0",
+    "nodemon": "^3.1.7",
+    "puppeteer": "^19.6.3",
+    "puppeteer-extra": "^3.3.4",
+    "puppeteer-extra-plugin-anonymize-ua": "^2.4.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.1",
+    "puppeteer-select": "^1.0.3"
+  }
+}
