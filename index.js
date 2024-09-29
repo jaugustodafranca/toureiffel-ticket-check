@@ -37,6 +37,7 @@ const isDateAvailableToBuy = async (page) => {
         const currentMonth = document.querySelector("span.d-month");
         return currentMonth ? currentMonth.innerHTML === month : false;
       }, MONTH);
+      if (isRightMonth) break;
       await page.click("button#d-next");
       if (isRightMonth) break;
       shouldGoNextMonth = !isRightMonth;
