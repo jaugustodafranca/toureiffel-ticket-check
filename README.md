@@ -1,8 +1,6 @@
 # toureiffel-ticket-check
 
-![Tour Eiffel](https://img.freepik.com/vetores-gratis/da-torre-eiffel_1284-38751.jpg?w=826&t=st=1727575368~exp=1727575968~hmac=c7e101621c4c8fc0efe59fd724afd5ded58c48b2bb92ce4f27412f0aef426b6b)
-
-<img src="https://img.freepik.com/vetores-gratis/da-torre-eiffel_1284-38751.jpg?w=826&t=st=1727575368~exp=1727575968~hmac=c7e101621c4c8fc0efe59fd724afd5ded58c48b2bb92ce4f27412f0aef426b6b" alt="Tour Eiffel" width="100"/>
+<img src="https://github.com/user-attachments/assets/c44be025-28a8-4c5c-9116-9e4331ea7d53" alt="Tour Eiffel" height="250"/>
 
 This script checks the availability of a specific date on a calendar, allowing you to be notified when the day is available for purchase.
 
@@ -32,10 +30,7 @@ yarn check
 
 ## Contributing
 
-Pull requests are welcome. For major changes, please open an issue first
-to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
+If you want to improve this script, pull requests are welcome.
 
 ## License
 
