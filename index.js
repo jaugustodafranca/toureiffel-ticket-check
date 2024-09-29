@@ -13,7 +13,7 @@ const {
 } = require("./utils");
 
 // SET HERE YOUR CONFIG
-const DEFAULT_POOL_DELAY_IN_MS = 60000 * 5; // 1min * X
+const DEFAULT_POOL_DELAY_IN_MS = 60000 * 1; // 1min * X
 const MAX_RETRY = 100;
 const MONTH = "November";
 const INPUT_ID = "1-0-d-day-29";
@@ -25,11 +25,6 @@ puppeteer.use(anonymizeUaPlugin());
 
 const isDateAvailableToBuy = async (page) => {
   try {
-    await page.goto("https://ticket.toureiffel.paris/en");
-
-    const acceptCookies = await page.$("button#tarteaucitronPersonalize2");
-    acceptCookies.evaluate((button) => button.click());
-
     let shouldGoNextMonth = true;
     while (shouldGoNextMonth) {
       await page.waitForSelector("span.d-year");
@@ -39,15 +34,14 @@ const isDateAvailableToBuy = async (page) => {
       }, MONTH);
       if (isRightMonth) break;
       await page.click("button#d-next");
-      if (isRightMonth) break;
       shouldGoNextMonth = !isRightMonth;
     }
 
-    const isDayAvailable = await page.evaluate(() => {
-      const dayButtonElement = document.getElementById(INPUT_ID);
+    const isDayAvailable = await page.evaluate((inputId) => {
+      const dayButtonElement = document.getElementById(inputId);
       if (!dayButtonElement) return false;
       return !dayButtonElement.disabled;
-    });
+    }, INPUT_ID);
 
     return isDayAvailable;
   } catch (err) {
@@ -61,10 +55,14 @@ const isDateAvailableToBuy = async (page) => {
     const browser = await puppeteer.launch({
       executablePath: executablePath(),
       args: ["--no-sandbox"],
-      headless: true,
+      headless: false,
       slowMo: 250,
     });
     const [page] = await browser.pages();
+    await page.goto("https://ticket.toureiffel.paris/en");
+    const acceptCookies = await page.$("button#tarteaucitronPersonalize2");
+    acceptCookies.evaluate((button) => button.click());
+
     while (retry < MAX_RETRY) {
       logStep(
         `[${retry}/${MAX_RETRY}] - Starting process at ${datefns.format(
@@ -88,7 +86,6 @@ const isDateAvailableToBuy = async (page) => {
     }
 
     exec("afplay ./alert.mp3");
-
     return;
   } catch (err) {
     console.error(err);
