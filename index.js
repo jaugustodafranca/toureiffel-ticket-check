@@ -79,7 +79,7 @@ const isDateAvailableToBuy = async (page) => {
         logStep(
           `[${retry}/${MAX_RETRY}] - Next try in ${millisToMinutesAndSeconds(
             nextPoll
-          )}m`
+          )}`
         );
         retry++;
         await delay(nextPoll);

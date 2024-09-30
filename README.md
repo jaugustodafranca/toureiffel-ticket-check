@@ -16,13 +16,13 @@ yarn install
 
 ## Usage
 
-For development and test the changes in the script run
+For development and test propose you can use the command bellow. It will run using [Nodemon](https://www.npmjs.com/package/nodemon)
 
 ```bash
 yarn start
 ```
 
-For let the script running in without [Nodemon](https://www.npmjs.com/package/nodemon)
+Otherwise use
 
 ```bash
 yarn check
